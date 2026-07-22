@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Play, Image as ImageIcon } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/ui/reveal";
+import { TiltCard } from "@/components/ui/tilt-card";
 import { portfolioItems, type PortfolioCategory } from "@/lib/site-config";
 
 const filters: Array<PortfolioCategory | "All"> = ["All", "Reels", "BTS", "Candid"];
@@ -71,35 +72,39 @@ export function Portfolio() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.35, delay: shouldReduceMotion ? 0 : i * 0.03, ease: [0.16, 1, 0.3, 1] }}
-                className={`group relative aspect-[4/5] overflow-hidden rounded-2xl ${categoryTint[item.category]} ${
-                  i % 5 === 0 ? "md:row-span-2 md:aspect-auto" : ""
-                }`}
+                className={i % 5 === 0 ? "md:row-span-2" : ""}
               >
-                {/* PLACEHOLDER MEDIA — real footage/photography from the client's
-                    events will replace this tile. src is set on the underlying
-                    data model for a straightforward swap later. When real photos
-                    land, render them with next/image (fill + sizes, lazy-loaded
-                    below the fold) instead of this icon block; for real reels,
-                    a muted looping <video> with poster, matching the hero. */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-ink/70 transition-transform duration-500 ease-out group-hover:scale-105">
-                  {item.type === "video" ? (
-                    <Play size={32} weight="light" aria-hidden />
-                  ) : (
-                    <ImageIcon size={32} weight="light" aria-hidden />
-                  )}
-                  <span className="text-[10px] font-medium uppercase tracking-[0.18em]">
-                    Placeholder {item.type}
-                  </span>
-                </div>
+                <TiltCard
+                  className={`group relative aspect-[4/5] overflow-hidden rounded-2xl ${categoryTint[item.category]} ${
+                    i % 5 === 0 ? "md:aspect-auto md:h-full" : ""
+                  }`}
+                >
+                  {/* PLACEHOLDER MEDIA — real footage/photography from the client's
+                      events will replace this tile. src is set on the underlying
+                      data model for a straightforward swap later. When real photos
+                      land, render them with next/image (fill + sizes, lazy-loaded
+                      below the fold) instead of this icon block; for real reels,
+                      a muted looping <video> with poster, matching the hero. */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-ink/70 transition-transform duration-500 ease-out group-hover:scale-105">
+                    {item.type === "video" ? (
+                      <Play size={32} weight="light" aria-hidden />
+                    ) : (
+                      <ImageIcon size={32} weight="light" aria-hidden />
+                    )}
+                    <span className="text-[10px] font-medium uppercase tracking-[0.18em]">
+                      Placeholder {item.type}
+                    </span>
+                  </div>
 
-                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/80 via-ink/0 to-ink/0 p-4 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100">
-                  <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-ivory/70">
-                    {item.category}
-                  </span>
-                  <span className="mt-0.5 text-sm font-medium text-ivory">
-                    {item.title}
-                  </span>
-                </div>
+                  <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/80 via-ink/0 to-ink/0 p-4 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-ivory/70">
+                      {item.category}
+                    </span>
+                    <span className="mt-0.5 text-sm font-medium text-ivory">
+                      {item.title}
+                    </span>
+                  </div>
+                </TiltCard>
               </motion.div>
             ))}
           </AnimatePresence>

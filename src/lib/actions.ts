@@ -56,6 +56,6 @@ export async function submitContactForm(
 
   return {
     status: "success",
-    message: "Thanks — your inquiry has been received. Reets will be in touch soon.",
+    message: "Thanks. Your inquiry has been received, and Reets will be in touch soon.",
   };
 }

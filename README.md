@@ -19,29 +19,35 @@ npm run start   # serve the production build
 npm run lint    # eslint
 ```
 
-## Before launch — placeholders to replace
+## Logo
+
+The client's real logo (`public/logo.jpg`) is wired in everywhere: nav,
+footer, favicon, apple touch icon, and the Open Graph image. Two transparent
+PNG colorways were extracted from it (`public/logo-mark.png` in ink for
+light sections, `public/logo-mark-ivory.png` in ivory for dark sections),
+plus tightly-cropped `logo-icon*.png` variants for small badge use, all
+served through `src/components/site/logo.tsx`. If a vector version becomes
+available later, swap the PNGs for SVGs there for crisper scaling at large
+sizes (the hero's 460px mark).
+
+## Before launch: placeholders to replace
 
 Everything below is clearly marked in the UI and/or code comments as a
 placeholder. Search the codebase for `PLACEHOLDER` to find every instance.
 
-- **Logo** — no logo file was attached when this site was built. `public/logo.svg`,
-  `src/app/icon.svg`, `src/app/apple-icon.tsx`, and `src/components/site/ring-mark.tsx`
-  are a recreation of the described mark (broken ring + interlocked R/K serif
-  monogram + curved wordmark). Swap in the client's real logo file and update
-  these references.
-- **Hero background** — `src/components/site/hero.tsx` uses a gradient placeholder.
+- **Hero background**: `src/components/site/hero.tsx` uses a gradient placeholder.
   Swap for the autoplaying/muted/looping reel or portrait still (markup for the
   `<video>` tag is already commented in the file).
-- **About bio copy** — `src/components/site/about.tsx`, flagged inline as
-  `[PLACEHOLDER — replace with real client copy]`.
-- **Portfolio media** — `src/lib/site-config.ts` (`portfolioItems`). Currently
+- **About bio copy**: `src/components/site/about.tsx`, flagged with a
+  "Placeholder copy" tag above the heading.
+- **Portfolio media**: `src/lib/site-config.ts` (`portfolioItems`). Currently
   labeled placeholder tiles; swap `src` paths for real photos/reels and update
   `src/components/site/portfolio.tsx` to render real media instead of the
   placeholder icon tiles.
-- **Testimonials** — `src/lib/site-config.ts` (`testimonials`), placeholder quotes
+- **Testimonials**: `src/lib/site-config.ts` (`testimonials`), placeholder quotes
   clearly labeled in the UI.
-- **Social links** — `src/lib/site-config.ts` (`socialLinks`). The third platform
-  (`@Reetskahanita`) wasn't specified by the client — swap the icon/href once
+- **Social links**: `src/lib/site-config.ts` (`socialLinks`). The third platform
+  (`@Reetskahanita`) wasn't specified by the client, swap the icon/href once
   the platform is confirmed.
 
 ## Contact form

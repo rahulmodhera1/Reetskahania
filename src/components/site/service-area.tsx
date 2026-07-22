@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -7,20 +8,27 @@ export function ServiceArea() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="service-area" className="bg-ink py-24 text-ivory sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+    <section id="service-area" className="relative overflow-hidden bg-ink py-24 text-ivory sm:py-32">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -left-24 opacity-[0.07] sm:-left-16"
+      >
+        <Image src="/logo-mark-ivory.png" alt="" width={420} height={420} sizes="420px" loading="lazy" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-6">
             <Reveal>
               <h2 className="text-balance font-display text-4xl font-medium leading-tight tracking-[-0.02em] sm:text-5xl">
-                Sacramento &amp; Reno — and the road between.
+                Sacramento &amp; Reno, and the road between.
               </h2>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-ivory/75 sm:text-lg">
                 Reets is based across both cities and books events throughout
-                the greater Sacramento and Reno–Tahoe areas. Travel further
-                out is available for the right event — reach out with your
+                the greater Sacramento and Reno-Tahoe areas. Travel further
+                out is available for the right event. Reach out with your
                 location and date.
               </p>
             </Reveal>

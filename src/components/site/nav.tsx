@@ -1,24 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { List, X } from "@phosphor-icons/react/dist/ssr";
-import { RingMark } from "@/components/site/ring-mark";
+import { Logo } from "@/components/site/logo";
 import { navLinks, siteConfig } from "@/lib/site-config";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const { scrollY, scrollYProgress } = useScroll();
 
-  useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 48);
-    }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 48);
+  });
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -59,7 +55,7 @@ export function Nav() {
             solid ? "text-ink" : "text-ivory"
           }`}
         >
-          <RingMark size={34} showWordmark={false} ink={solid ? "#1C1815" : "#FAF5EF"} />
+          <Logo variant={solid ? "ink" : "ivory"} size={34} priority />
           <span className="font-display text-base tracking-normal">{siteConfig.name}</span>
         </a>
 
@@ -107,6 +103,12 @@ export function Nav() {
           </button>
         </div>
       </nav>
+
+      <motion.div
+        aria-hidden
+        style={{ scaleX: scrollYProgress }}
+        className={`h-px origin-left ${solid ? "bg-ink/25" : "bg-ivory/40"}`}
+      />
 
       <AnimatePresence>
         {menuOpen && (

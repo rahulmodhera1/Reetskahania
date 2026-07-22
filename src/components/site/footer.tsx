@@ -1,4 +1,4 @@
-import { RingMark } from "@/components/site/ring-mark";
+import { Logo } from "@/components/site/logo";
 import { navLinks, siteConfig, socialLinks } from "@/lib/site-config";
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <a href="#top" className="inline-flex items-center gap-2.5">
-              <RingMark size={36} showWordmark={false} ink="#FAF5EF" />
+              <Logo variant="ivory" size={36} />
               <span className="font-display text-lg tracking-normal">{siteConfig.name}</span>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ivory/60">

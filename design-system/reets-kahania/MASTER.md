@@ -103,8 +103,83 @@ bumped to ink for anything under 16px to stay safely above 4.5:1).
 | Input | 10px | none | 1px border taupe/40, focus ring blush |
 | Nav | n/a | none until scrolled, then soft 1px bottom border | transparent over hero |
 
+## Revision 2: redesign-overhaul pass
+
+Client feedback on the v1 build: didn't like the aesthetic, wanted it to
+read as agency-crafted rather than templated. Re-ran `design-taste-frontend`
+(now properly loaded via the Skill tool, not read from disk) as a redesign
+classification.
+
+**Design read**: redesign-overhaul of an event content creator's single-page
+marketing/portfolio site, for engaged couples and event clients researching
+photographers, with a premium editorial-creative language, leaning toward
+native Tailwind + Motion with no official design system. Brand palette and
+the (now real) logo are fixed client-owned constraints, not up for
+reinvention.
+
+**Dials**: redesign-overhaul adds +2/+2 to variance/motion, density matched.
+`VARIANCE: 9` (was 7), `MOTION: 8` (was 6), `DENSITY: 3` (unchanged).
+
+**What changed**:
+- **Real logo integrated everywhere.** The client's actual logo
+  (`public/logo.jpg`) replaced the hand-drawn recreation (`ring-mark.tsx`,
+  deleted). Two transparent PNG colorways were extracted from it via local
+  chroma-key (flat near-uniform background, so a distance-threshold alpha
+  ramp gave a clean cutout without a background-removal service) for use on
+  light and dark sections, plus tight-crop icon variants for small badge
+  use. Wired into nav, footer, favicon, apple-icon, OG image, and used as a
+  large scroll-parallaxed decorative mark in the hero and a low-opacity
+  watermark in the Service Area section.
+- **Zero em-dashes.** `design-taste-frontend`'s Section 9.G is explicit and
+  non-negotiable on this: the em-dash is the single most-tested AI tell.
+  Audited every visible string site-wide (metadata titles, section copy,
+  form messages, alt text) and rewrote each one with a period, comma, or
+  colon instead.
+- **Fixed a real anti-pattern**: Social Proof was three equal-width cards,
+  exactly the banned "3-column equal feature cards" pattern (Section 9.C).
+  Rebuilt as an asymmetric featured-plus-two layout.
+- **Fixed a real technical violation**: Nav's scroll-based nav-solidify
+  logic used a raw `window.addEventListener('scroll', ...)`, which Section
+  5.D bans outright (jank-prone, no batching). Replaced with Motion's
+  `useScroll` + `useMotionValueEvent`, and added a scroll-progress hairline
+  under the nav as a cheap, motivated bonus (shows reading progress, costs
+  nothing extra since the motion value already existed).
+- **Testimonials** rebuilt from a centered carousel-in-a-box (generic,
+  low-confidence type) into an asymmetric editorial pull-quote: large
+  left-aligned serif quote, giant low-opacity decorative quotation mark,
+  controls and the placeholder label moved to a distinct right-hand column.
+- **Contact** rebuilt from a centered narrow form (the same layout family as
+  the old Testimonials, contributing to the templated feel) into an
+  asymmetric split: copy and direct-email link on the left, form on the
+  right.
+- **About** gained an editorial drop-cap on the bio's first letter and an
+  offset hairline frame behind the portrait placeholder, both real print/
+  editorial techniques, not decoration for its own sake.
+- **Services** gained a hover-interactive state (row tints, name nudges
+  right) and bumped display type one step larger for more typographic
+  confidence.
+- **Portfolio** tiles gained a cursor-reactive 3D tilt (`TiltCard`,
+  `ui/tilt-card.tsx`): motion values only, no React state, gated behind
+  `prefers-reduced-motion` and effectively inert on touch (no continuous
+  `mousemove` on touch devices).
+- **Global**: added a fixed, `pointer-events-none`, ~5%-opacity film-grain
+  texture overlay for tactile depth against the flat brand palette. This is
+  the one explicitly-endorsed exception in the anti-pattern rules (Section
+  6.E permits grain on a fixed viewport-level layer; it only bans it on
+  scrolling containers, which this isn't).
+- **Performance regression caught and fixed**: the redesign initially
+  dropped Lighthouse Performance from 94 to 74 (production build). Root
+  causes: an oversized 512px favicon (trimmed to 256px), missing `sizes`
+  hints on the new logo `<Image>` usages (added), and the hero's decorative
+  logo image inheriting the same "opacity:0 initial state delays LCP"
+  mistake documented below (see Motion section) despite being purely
+  decorative. Fixed by removing the opacity/scale entrance on that image
+  and keeping only the scroll-linked parallax, which doesn't block first
+  paint. Final: Performance 93, Accessibility/Best Practices/SEO 100/100/100
+  (production build, simulated throttling).
+
 ## Source of truth
 
 This file is the master. Section-specific overrides (if any) live in
-`design-system/reets-kahania/pages/*.md`. None exist yet — the single
+`design-system/reets-kahania/pages/*.md`. None exist yet, the single
 scrolling page uses Master rules exclusively.

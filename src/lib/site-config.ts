@@ -22,7 +22,7 @@ export const services = [
     name: "Reels",
     tagline: "Short-form, built to travel",
     description:
-      "Vertical highlight edits cut for Instagram and TikTok — the fast-moving, music-led recap that gets your event seen beyond the room it happened in.",
+      "Vertical highlight edits cut for Instagram and TikTok: the fast-moving, music-led recap that gets your event seen beyond the room it happened in.",
   },
   {
     id: "bts",
@@ -36,7 +36,7 @@ export const services = [
     name: "Candid",
     tagline: "Unposed, in the moment",
     description:
-      "Photography and videography that doesn't ask anyone to pose. Real reactions, real timing — the coverage that reads true a year later.",
+      "Photography and videography that doesn't ask anyone to pose. Real reactions, real timing: the coverage that reads true a year later.",
   },
 ] as const;
 
@@ -51,7 +51,7 @@ export type PortfolioItem = {
   poster?: string;
 };
 
-// [PLACEHOLDER MEDIA] — swap src paths with real client footage/photography
+// [PLACEHOLDER MEDIA]: swap src paths with real client footage/photography
 // before launch. Filenames describe the intended shot for the client's reference.
 export const portfolioItems: PortfolioItem[] = [
   { id: "p1", category: "Reels", title: "Sangeet highlight reel", type: "video", src: "/media/placeholder-reel-1.mp4" },
@@ -65,7 +65,7 @@ export const portfolioItems: PortfolioItem[] = [
   { id: "p9", category: "BTS", title: "Crew setting up the frame", type: "photo", src: "/media/placeholder-bts-3.jpg" },
 ];
 
-// [PLACEHOLDER COPY — REPLACE WITH REAL CLIENT TESTIMONIALS]
+// [PLACEHOLDER COPY: REPLACE WITH REAL CLIENT TESTIMONIALS]
 export const testimonials = [
   {
     quote:
@@ -81,7 +81,7 @@ export const testimonials = [
   },
   {
     quote:
-      "The BTS footage alone was worth it — seeing the setup and the nerves before doors opened made the final video hit different.",
+      "The BTS footage alone was worth it. Seeing the setup and the nerves before doors opened made the final video hit different.",
     name: "Placeholder Client",
     role: "Corporate launch, Sacramento",
   },
@@ -102,7 +102,7 @@ export const socialLinks = [
   },
   {
     id: "second-platform",
-    // Platform unspecified by client — swap `href`/icon once confirmed.
+    // Platform unspecified by client: swap `href`/icon once confirmed.
     label: "@Reetskahanita",
     sublabel: "Platform TBD",
     href: "#",

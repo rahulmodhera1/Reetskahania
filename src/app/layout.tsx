@@ -25,7 +25,7 @@ const siteUrl = "https://reetskahania.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Reets Kahania | Event Content Creator — Sacramento & Reno",
+    default: "Reets Kahania | Event Content Creator, Sacramento & Reno",
     template: "%s | Reets Kahania",
   },
   description:
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Reets Kahania" }],
   openGraph: {
-    title: "Reets Kahania | Event Content Creator — Sacramento & Reno",
+    title: "Reets Kahania | Event Content Creator, Sacramento & Reno",
     description:
       "Reels, BTS, and Candid event content. Capturing your story, one moment at a time.",
     url: siteUrl,
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reets Kahania | Event Content Creator — Sacramento & Reno",
+    title: "Reets Kahania | Event Content Creator, Sacramento & Reno",
     description:
       "Reels, BTS, and Candid event content. Capturing your story, one moment at a time.",
   },
@@ -73,6 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
       <body className="bg-ivory text-ink font-sans antialiased">
+        <div aria-hidden className="grain-overlay" />
         {children}
       </body>
     </html>
