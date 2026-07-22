@@ -310,6 +310,68 @@ variants, added in Revision 2 for the since-removed dark hero, were
 unused after the Revision 3 all-light palette and Revision 4 hero
 rebuild. Removed along with their type union members.
 
+## Revision 5: gold accent system + Services rebuild + a real Portfolio bug
+
+**Gold accent color**: added `--color-gold` (#AE8A45, decorative use —
+rules, dots, rings, numerals) and `--color-gold-deep` (#7C6029, clears
+4.5:1 on ivory, for the rare case gold is used as actual text) as new
+design tokens, per "incorporate gold accents... throughout the website."
+Applied as a restrained, one-touch-per-section accent rather than a
+loud repaint: the hero's ornament dot, signature-stroke underline, and
+service-label separators; the Services numeral watermark and hover
+accent bar; the Portfolio active-tab ring and corner-frame hover state;
+the nav's scroll-progress bar; the testimonials' oversized quote mark;
+the service-area travel dot; and a hover ring on the primary button.
+
+**Services**: "I hate how it says 'Three ways to keep the day'... the
+layout seems kinda boring." Heading changed to "Three ways to capture
+your day" (matches the "capturing your story" verb already used in the
+site's slogan — more professional than "keep"). The flat divided-list
+layout was rebuilt with a large faint gold numeral (01/02/03) watermarked
+behind each row, a gold accent bar that grows in on hover, and a gold
+underline beneath each service name — same information architecture,
+considerably more editorial.
+
+**Portfolio filter tabs — real bug, not just taste**: "whatever tab
+you're on... it makes it white which makes it blended in with the
+background." The active tab's shared-layout pill (`layoutId`, `bg-ink`,
+`-z-10`) was rendering behind the entire tablist rather than behind its
+own button: the button had `position: relative` but no stacking context
+of its own, so a child at `z-index: -10` escaped to the nearest ancestor
+stacking context instead of staying scoped locally, painting behind the
+whole row's shared background rather than immediately behind the tab
+text. Fixed by adding `isolate` to each tab button (forces a local
+stacking context), confirmed by screenshotting the active "Reels" tab
+in isolation — now a crisp, unmistakable dark pill. Also added a
+`ring-gold/50` to the active pill as this round's gold touch.
+
+**Hero**: "it looks kinda boring, with no character... make the font
+match her logo... add some animation like it's being written on the
+screen... fix the boxes that say Reels, BTS, Candid." Headline weight
+bumped to extrabold (800, the heaviest loaded cut) for a more dramatic
+thick/thin contrast closer to the logo's Didone monogram. The "written
+on screen" ask is delivered by a signature-stroke SVG underline beneath
+the headline that draws itself in via `pathLength` — decorative and off
+the LCP element, so safe to animate. The boxy bordered service pills
+(Reels / BTS / Candid) were replaced with small-caps labels separated by
+rotated gold-diamond dividers, a lighter, more editorial treatment that
+echoes the ornament dot added above the eyebrow.
+
+**Performance regression caught and reverted before shipping**: the
+first pass of this hero also gave the italic slogan a `clip-path`
+handwriting-reveal (text wiping in left-to-right) plus a blinking gold
+cursor. Lighthouse afterward showed Performance down from 93 to 89 —
+Total Blocking Time roughly doubled (100ms → 260ms) and max-potential-FID
+went from 140ms to 190ms, both driven by a jump in the "Rendering" and
+"Style & Layout" main-thread buckets. Isolated the cause by reverting
+just that one animation and re-measuring: TBT dropped to 40ms and the
+score returned to 93, confirming the `clip-path` reveal animating across
+the full paragraph width every frame (as opposed to `transform`/`opacity`,
+which the compositor can handle off the main thread) was the entire
+regression. Replaced with a plain opacity/y fade; the "written on
+screen" feel is still delivered by the (much cheaper, much smaller)
+SVG signature stroke under the headline.
+
 ## Source of truth
 
 This file is the master. Section-specific overrides (if any) live in

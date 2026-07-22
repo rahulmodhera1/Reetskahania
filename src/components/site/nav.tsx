@@ -94,7 +94,7 @@ export function Nav() {
       <motion.div
         aria-hidden
         style={{ scaleX: scrollYProgress }}
-        className="h-px origin-left bg-ink/25"
+        className="h-px origin-left bg-gold/70"
       />
 
       <AnimatePresence>

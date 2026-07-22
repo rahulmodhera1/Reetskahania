@@ -22,12 +22,13 @@ const tileGradients = [
 ];
 
 function CornerFrame() {
+  const base = "absolute h-3.5 w-3.5 border-ink/25 transition-colors duration-300 ease-out group-hover:border-gold/70";
   return (
     <>
-      <span aria-hidden className="absolute left-3 top-3 h-3.5 w-3.5 border-l border-t border-ink/25" />
-      <span aria-hidden className="absolute right-3 top-3 h-3.5 w-3.5 border-r border-t border-ink/25" />
-      <span aria-hidden className="absolute bottom-3 left-3 h-3.5 w-3.5 border-b border-l border-ink/25" />
-      <span aria-hidden className="absolute bottom-3 right-3 h-3.5 w-3.5 border-b border-r border-ink/25" />
+      <span aria-hidden className={`${base} left-3 top-3 border-l border-t`} />
+      <span aria-hidden className={`${base} right-3 top-3 border-r border-t`} />
+      <span aria-hidden className={`${base} bottom-3 left-3 border-b border-l`} />
+      <span aria-hidden className={`${base} bottom-3 right-3 border-b border-r`} />
     </>
   );
 }
@@ -63,14 +64,14 @@ export function Portfolio() {
                   role="tab"
                   aria-selected={active === filter}
                   onClick={() => setActive(filter)}
-                  className={`relative rounded-full px-4 py-2.5 text-sm font-medium tracking-wide transition-colors duration-200 ease-out ${
+                  className={`relative isolate rounded-full px-4 py-2.5 text-sm font-medium tracking-wide transition-colors duration-200 ease-out ${
                     active === filter ? "text-on-ink" : "text-ink/70 hover:text-ink"
                   }`}
                 >
                   {active === filter && (
                     <motion.span
                       layoutId="portfolio-filter-pill"
-                      className="absolute inset-0 -z-10 rounded-full bg-ink"
+                      className="absolute inset-0 -z-10 rounded-full bg-ink ring-1 ring-inset ring-gold/50"
                       transition={
                         shouldReduceMotion
                           ? { duration: 0 }

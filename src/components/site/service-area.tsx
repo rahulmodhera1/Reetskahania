@@ -61,7 +61,7 @@ export function ServiceArea() {
                   {!shouldReduceMotion && (
                     <motion.span
                       aria-hidden
-                      className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-taupe-text shadow-[0_0_0_4px_rgba(101,85,72,0.15)]"
+                      className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-gold shadow-[0_0_0_4px_rgba(174,138,69,0.18)]"
                       initial={{ left: "0%", opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}

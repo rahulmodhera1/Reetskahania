@@ -40,7 +40,7 @@ export function Testimonials() {
           >
             <span
               aria-hidden
-              className="pointer-events-none absolute -left-3 -top-16 select-none font-display text-[10rem] italic leading-none text-ink/[0.08] sm:-top-20 sm:text-[13rem]"
+              className="pointer-events-none absolute -left-3 -top-16 select-none font-display text-[10rem] italic leading-none text-gold/[0.16] sm:-top-20 sm:text-[13rem]"
             >
               &ldquo;
             </span>

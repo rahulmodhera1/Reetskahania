@@ -10,6 +10,11 @@
   --color-taupe-text: #655548;
   --color-blush: #d9bcac;
   --color-on-ink: #faf5ef;
+  /* Muted antique brass, not a bright/neon gold, to stay inside the warm
+     neutral palette. Decorative use only (rules, dots, rings, numerals) —
+     for actual text, use --color-gold-deep, which clears 4.5:1 on ivory. */
+  --color-gold: #ae8a45;
+  --color-gold-deep: #7c6029;
 }
 
 @theme inline {
@@ -20,6 +25,8 @@
   --color-taupe-text: var(--color-taupe-text);
   --color-blush: var(--color-blush);
   --color-on-ink: var(--color-on-ink);
+  --color-gold: var(--color-gold);
+  --color-gold-deep: var(--color-gold-deep);
 
   --font-display: var(--font-display-serif);
   --font-sans: var(--font-inter);

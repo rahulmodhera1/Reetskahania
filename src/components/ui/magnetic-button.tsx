@@ -17,8 +17,8 @@ type MagneticButtonProps = {
 };
 
 const variantClasses: Record<NonNullable<MagneticButtonProps["variant"]>, string> = {
-  primary: "bg-ink text-on-ink hover:bg-ink/90",
-  secondary: "bg-transparent text-ink border border-ink/70 hover:bg-ink hover:text-on-ink",
+  primary: "bg-ink text-on-ink ring-1 ring-transparent hover:bg-ink/90 hover:ring-gold/60",
+  secondary: "bg-transparent text-ink border border-ink/70 hover:bg-ink hover:text-on-ink hover:border-gold/60",
   ghost: "bg-ivory text-ink hover:bg-blush",
 };
 
