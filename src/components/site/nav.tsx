@@ -70,7 +70,7 @@ export function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium tracking-wide text-on-ink transition-colors duration-200 hover:bg-ink/90 sm:inline-flex"
+            className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium tracking-wide text-on-ink ring-1 ring-transparent transition-colors duration-200 hover:bg-ink/90 hover:ring-gold/60 sm:inline-flex"
           >
             Book a Session
           </a>

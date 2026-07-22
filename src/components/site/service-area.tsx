@@ -68,7 +68,7 @@ export function ServiceArea() {
                       animate={{ left: ["0%", "100%", "0%"] }}
                       transition={{
                         opacity: { duration: 0.6, delay: 1 },
-                        left: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
+                        left: { duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
                       }}
                     />
                   )}

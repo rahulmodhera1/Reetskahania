@@ -40,7 +40,7 @@ export function Testimonials() {
           >
             <span
               aria-hidden
-              className="pointer-events-none absolute -left-3 -top-16 select-none font-display text-[10rem] italic leading-none text-gold/[0.16] sm:-top-20 sm:text-[13rem]"
+              className="pointer-events-none absolute -left-10 -top-16 select-none font-display text-[10rem] italic leading-none text-gold/[0.16] sm:-left-14 sm:-top-20 sm:text-[13rem]"
             >
               &ldquo;
             </span>
@@ -105,7 +105,7 @@ export function Testimonials() {
                     <span
                       aria-hidden
                       className={`h-1.5 rounded-full transition-all duration-300 ease-out ${
-                        i === index ? "w-6 bg-ink" : "w-1.5 bg-ink/25"
+                        i === index ? "w-6 bg-gold" : "w-1.5 bg-ink/25"
                       }`}
                     />
                   </button>

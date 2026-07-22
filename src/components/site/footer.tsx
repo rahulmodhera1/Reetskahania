@@ -25,7 +25,8 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-taupe-text">
+            <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-taupe-text">
+              <span aria-hidden className="h-1 w-1 rotate-45 bg-gold" />
               Navigate
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -33,7 +34,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-ink/75 transition-colors hover:text-ink"
+                    className="text-sm text-ink/75 transition-colors hover:text-gold-deep"
                   >
                     {link.label}
                   </a>
@@ -43,7 +44,8 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-taupe-text">
+            <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-taupe-text">
+              <span aria-hidden className="h-1 w-1 rotate-45 bg-gold" />
               Connect
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -55,9 +57,9 @@ export function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-ink/75 transition-colors hover:text-ink"
+                      className="group inline-flex items-center gap-2 text-sm text-ink/75 transition-colors hover:text-gold-deep"
                     >
-                      <Icon size={15} weight="light" aria-hidden />
+                      <Icon size={15} weight="light" aria-hidden className="transition-colors group-hover:text-gold" />
                       {social.handle}
                     </a>
                   </li>
@@ -66,7 +68,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-sm text-ink/75 transition-colors hover:text-ink"
+                  className="text-sm text-ink/75 transition-colors hover:text-gold-deep"
                 >
                   {siteConfig.email}
                 </a>
@@ -75,7 +77,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-ink/10 pt-8 text-xs text-taupe-text sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-gold/20 pt-8 text-xs text-taupe-text sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} {siteConfig.name}. All rights reserved.</p>
           <p>Sacramento &amp; Reno, Reels, BTS, Candid</p>
         </div>

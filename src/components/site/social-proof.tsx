@@ -28,10 +28,10 @@ export function SocialProof() {
                 href={primary.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full min-h-[220px] flex-col justify-between gap-10 rounded-2xl border border-ink/12 bg-beige/25 p-8 transition-colors duration-200 ease-out hover:border-ink/30"
+                className="group flex h-full min-h-[220px] flex-col justify-between gap-10 rounded-2xl border border-gold/20 bg-beige/25 p-8 transition-colors duration-200 ease-out hover:border-gold/60"
               >
                 <div className="flex items-center justify-between">
-                  <PrimaryIcon size={26} weight="light" aria-hidden className="text-ink/70" />
+                  <PrimaryIcon size={26} weight="light" aria-hidden className="text-ink/70 transition-colors duration-200 ease-out group-hover:text-gold-deep" />
                   <ArrowUpRight
                     size={18}
                     weight="light"
@@ -58,10 +58,10 @@ export function SocialProof() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-ink/12 p-6 transition-colors duration-200 ease-out hover:border-ink/30 hover:bg-beige/30"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-gold/20 p-6 transition-colors duration-200 ease-out hover:border-gold/60 hover:bg-beige/30"
                   >
                     <div className="flex items-center gap-3">
-                      <Icon size={20} weight="light" aria-hidden className="text-ink/70" />
+                      <Icon size={20} weight="light" aria-hidden className="text-ink/70 transition-colors duration-200 ease-out group-hover:text-gold-deep" />
                       <div>
                         <p className="font-display text-lg font-medium tracking-[-0.01em] text-ink">
                           {social.handle}

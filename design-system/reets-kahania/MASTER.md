@@ -372,6 +372,71 @@ regression. Replaced with a plain opacity/y fade; the "written on
 screen" feel is still delivered by the (much cheaper, much smaller)
 SVG signature stroke under the headline.
 
+## Revision 6: hero ornament pullback, a real "drawn on load" headline, gold everywhere
+
+**Hero ornament removal**: "remove the star at the top, remove the gold
+scribble line." The Revision 5 hero had picked up a small rotated-gold
+ornament above the eyebrow and a signature-stroke SVG underline beneath
+the headline; both read as clutter once shipped, so both are gone. The
+diamond dividers between the service labels (Reels · BTS · Candid) stay
+— those weren't called out and still serve a purpose separating the
+labels.
+
+**Slogan, one line**: the italic slogan was wrapping to two lines at the
+width in the client's screenshot because of a `max-w-md` (448px) cap
+that was narrower than it needed to be. Removed the cap, added
+`whitespace-nowrap`, and stepped the font size down at the smallest
+breakpoint (`text-sm sm:text-xl md:text-2xl`) so it still fits without
+wrapping or overflowing on a phone-width viewport.
+
+**CTA buttons, simplified**: "remove the stupid drag animation... I
+don't like how it moves depending on the cursor." The button component
+tracked the cursor with a spring-physics offset (a "magnetic" pull
+toward the pointer). Removed entirely and replaced with a plain
+`whileHover={{ scale: 1.03 }}` / `whileTap={{ scale: 0.97 }}` — since it
+no longer does anything magnetic, the component was renamed
+`MagneticButton` → `CtaButton` (`magnetic-button.tsx` →
+`cta-button.tsx`) rather than keep a name that misdescribes what it
+does.
+
+**A real "drawn on load" headline**: earlier revisions avoided
+animating the H1 itself because hiding it (opacity or clip-path) at
+mount delays Largest Contentful Paint — LCP measures when the element's
+own pixels are painted, and a hidden/clipped element doesn't count as
+painted until revealed. This revision gets the "text being drawn"
+effect without that tradeoff: the H1 renders at full opacity from the
+first frame (so LCP is untouched), and a plain ivory-colored panel sits
+on top of it, covering the text and then wiping away left-to-right via
+a single `scaleX` transform anchored to the right edge. The panel is a
+content-free div (no text or image), so it isn't itself an LCP
+candidate, and because only `transform` is animating, the compositor
+handles it without a single per-frame repaint — unlike the `clip-path`
+approach reverted in Revision 5. Verified with a screenshot at ~250ms
+into the load that the panel is genuinely mid-wipe (the last few
+characters of "Kahania" still covered), and confirmed via a second
+Lighthouse pass that Performance held (91–94 across two runs, consistent
+with normal simulated-throttling run-to-run variance, not a regression).
+
+**Gold, applied broadly**: "I don't want just the soft pink, add gold
+accents everywhere you see fit." Previously gold was confined to Hero,
+Services, and the Portfolio tab fix. This pass adds it to every
+remaining section, each with a restrained, purpose-fitting touch rather
+than a blanket repaint: About's placeholder badge (was blush/pink,
+now a gold-outlined pill plus a gold rule under the heading — directly
+answers the "not just pink" note), Contact's input focus state and
+submit-button hover ring, the email link's border and hover color,
+Footer's section-label bullets and link/icon hover states and top
+divider, Social Proof's card borders and icon hover color, Portfolio's
+corner frames (now gold-tinted by default, not only on hover), the
+Testimonials active pagination dot, and the Nav's "Book a Session"
+hover ring.
+
+**Two more direct fixes**: the Service Area travel dot was "going too
+fast" — its loop duration went from 5s to 9s. The Testimonials
+oversized quote mark read as misplaced sitting almost flush with the
+quote text; shifted further left (`-left-3` → `-left-10`, `sm:-left-14`)
+so it reads clearly as a decorative mark rather than crowding the copy.
+
 ## Source of truth
 
 This file is the master. Section-specific overrides (if any) live in

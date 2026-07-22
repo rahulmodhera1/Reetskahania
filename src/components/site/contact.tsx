@@ -10,7 +10,7 @@ import { eventTypes, siteConfig } from "@/lib/site-config";
 const initialState: ContactFormState = { status: "idle", message: "" };
 
 const fieldClasses =
-  "w-full rounded-xl border border-ink/20 bg-ivory px-4 py-3 text-base text-ink placeholder:text-ink/65 outline-none transition-colors duration-150 ease-out focus:border-ink";
+  "w-full rounded-xl border border-ink/20 bg-ivory px-4 py-3 text-base text-ink placeholder:text-ink/65 outline-none transition-colors duration-150 ease-out focus:border-gold";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -18,7 +18,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-full bg-ink px-7 py-3.5 text-sm font-medium tracking-wide text-on-ink transition-all duration-200 ease-out hover:bg-ink/90 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+      className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-full bg-ink px-7 py-3.5 text-sm font-medium tracking-wide text-on-ink ring-1 ring-transparent transition-all duration-200 ease-out hover:bg-ink/90 hover:ring-gold/60 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
     >
       {pending ? "Sending…" : "Send Inquiry"}
     </button>
@@ -46,7 +46,7 @@ export function Contact() {
             <Reveal delay={0.1}>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="group mt-10 inline-flex items-center gap-2 border-t border-ink/15 pt-6 text-base font-medium text-ink"
+                className="group mt-10 inline-flex items-center gap-2 border-t border-gold/40 pt-6 text-base font-medium text-ink transition-colors duration-200 ease-out hover:text-gold-deep"
               >
                 {siteConfig.email}
                 <ArrowUpRight

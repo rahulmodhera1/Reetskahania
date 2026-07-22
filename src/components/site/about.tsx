@@ -19,12 +19,13 @@ export function About() {
 
         <div className="lg:col-span-6 lg:col-start-7 lg:pt-6">
           <Reveal delay={0.1}>
-            <span className="mb-5 inline-block rounded-full bg-blush/60 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/70">
+            <span className="mb-5 inline-block rounded-full border border-gold/50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold-deep">
               Placeholder copy
             </span>
             <h2 className="text-balance font-display text-4xl font-medium leading-tight tracking-[-0.02em] text-ink sm:text-5xl">
               Story first, always.
             </h2>
+            <span aria-hidden className="mt-4 block h-px w-10 bg-gold" />
           </Reveal>
           <Reveal delay={0.18}>
             <div className="mt-6 space-y-5 text-pretty text-base leading-relaxed text-ink/80 sm:text-lg">

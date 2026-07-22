@@ -22,7 +22,7 @@ const tileGradients = [
 ];
 
 function CornerFrame() {
-  const base = "absolute h-3.5 w-3.5 border-ink/25 transition-colors duration-300 ease-out group-hover:border-gold/70";
+  const base = "absolute h-3.5 w-3.5 border-gold/40 transition-colors duration-300 ease-out group-hover:border-gold/80";
   return (
     <>
       <span aria-hidden className={`${base} left-3 top-3 border-l border-t`} />
