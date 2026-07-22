@@ -490,6 +490,35 @@ are comfortably usable at phone width. Lighthouse mobile
 already correctly configured (`width=device-width, initial-scale=1`,
 no zoom lock), so pinch-zoom accessibility was never at risk.
 
+## Revision 7.1: the seam fix's own bug — blur ghosting on mobile
+
+The Revision 7 fix for the drawn-headline seam added a small blur
+(`blur-[6px]`) to the color-matched cover panel, on the theory that
+softening its edges would hide any residual mismatch. Reported directly
+with a mobile screenshot: at some point during the wipe, faint vertical
+lines appeared cutting through several of the letterforms in "Kahania"
+and then vanished. The blur was the cause — blurring an element while
+it is simultaneously being scaled (`scaleX`) produces a soft gradient
+edge that, at certain points in the animation, crosses directly over
+individual letter strokes and partially blends with them, reading as
+thin ghost lines through the text. This is exactly the kind of
+device/GPU-rasterization-dependent artifact that's hard to predict
+without testing on the real target (hence only surfacing on mobile).
+
+Since the sampled background color from Revision 7 already matches the
+hero gradient closely (within a few RGB units across the entire
+headline's bounding box), the blur was never actually necessary — a
+hard edge with the correct color is not visibly a "seam" on its own.
+Removed the blur and the compensating overhang entirely, back to a
+plain `inset-0` panel. Verified by CPU-throttling the page 6x (to
+stretch the ~900ms animation long enough to reliably screenshot
+mid-flight rather than guessing at timing) and confirming a genuine
+mid-wipe frame shows a clean cut with no ghosting. Re-ran Lighthouse
+twice to rule out run-to-run variance (one run read 89, a re-run read
+93, consistent with noise already observed elsewhere in this project's
+simulated-throttling environment) — removing a filter, if anything,
+should only ever reduce cost, never add it.
+
 ## Source of truth
 
 This file is the master. Section-specific overrides (if any) live in
