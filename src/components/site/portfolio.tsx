@@ -45,7 +45,7 @@ export function Portfolio() {
                   role="tab"
                   aria-selected={active === filter}
                   onClick={() => setActive(filter)}
-                  className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 ease-out ${
+                  className={`rounded-full px-4 py-3 text-sm font-medium tracking-wide transition-colors duration-200 ease-out ${
                     active === filter
                       ? "bg-ink text-on-ink"
                       : "bg-transparent text-ink/70 hover:text-ink"
@@ -80,9 +80,9 @@ export function Portfolio() {
                     data model for a straightforward swap later. */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-ink/70 transition-transform duration-500 ease-out group-hover:scale-105">
                   {item.type === "video" ? (
-                    <Play size={32} weight="light" />
+                    <Play size={32} weight="light" aria-hidden />
                   ) : (
-                    <ImageIcon size={32} weight="light" />
+                    <ImageIcon size={32} weight="light" aria-hidden />
                   )}
                   <span className="text-[10px] font-medium uppercase tracking-[0.18em]">
                     Placeholder {item.type}

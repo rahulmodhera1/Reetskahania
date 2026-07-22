@@ -21,20 +21,22 @@ export function SocialProof() {
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {socialLinks.map((social, i) => {
             const Icon = icons[social.id as keyof typeof icons];
+            const isExternal = social.href.startsWith("http");
             return (
               <Reveal key={social.id} delay={i * 0.08}>
                 <a
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  aria-disabled={!isExternal}
                   className="group flex h-full flex-col justify-between gap-8 rounded-2xl border border-ink/12 p-6 transition-colors duration-200 ease-out hover:border-ink/30 hover:bg-beige/30"
                 >
                   <div className="flex items-center justify-between">
-                    <Icon size={22} weight="light" className="text-ink/70" />
+                    <Icon size={22} weight="light" aria-hidden className="text-ink/70" />
                     <ArrowUpRight
                       size={16}
                       weight="light"
-                      className="text-ink/40 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ink"
+                      aria-hidden
+                      className="text-ink/55 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ink"
                     />
                   </div>
                   <div>

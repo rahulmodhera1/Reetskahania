@@ -81,11 +81,15 @@ export function Nav() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
-            className={`inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden ${
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden ${
               solid ? "text-ink" : "text-ivory"
             }`}
           >
-            {menuOpen ? <X size={22} weight="light" /> : <List size={22} weight="light" />}
+            {menuOpen ? (
+              <X size={22} weight="light" aria-hidden />
+            ) : (
+              <List size={22} weight="light" aria-hidden />
+            )}
           </button>
         </div>
       </nav>

@@ -29,6 +29,7 @@ export function Testimonials() {
     <section id="testimonials" className="bg-beige/40 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-6 lg:px-10">
         <Reveal>
+          <h2 className="sr-only">Testimonials</h2>
           <p className="text-center text-[10px] font-medium uppercase tracking-[0.2em] text-ink/70">
             Placeholder quotes — replace with real client testimonials
           </p>
@@ -65,12 +66,12 @@ export function Testimonials() {
             type="button"
             aria-label="Previous testimonial"
             onClick={() => go(-1)}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-ink/60 transition-colors hover:text-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-ink/60 transition-colors hover:text-ink"
           >
-            <CaretLeft size={18} weight="light" />
+            <CaretLeft size={18} weight="light" aria-hidden />
           </button>
 
-          <div className="flex items-center gap-2" role="tablist" aria-label="Select testimonial">
+          <div className="flex items-center" role="tablist" aria-label="Select testimonial">
             {testimonials.map((t, i) => (
               <button
                 key={t.name + i}
@@ -78,10 +79,15 @@ export function Testimonials() {
                 aria-selected={i === index}
                 aria-label={`Testimonial ${i + 1}`}
                 onClick={() => setIndex(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ease-out ${
-                  i === index ? "w-6 bg-ink" : "w-1.5 bg-ink/25"
-                }`}
-              />
+                className="relative flex h-11 w-11 items-center justify-center"
+              >
+                <span
+                  aria-hidden
+                  className={`h-1.5 rounded-full transition-all duration-300 ease-out ${
+                    i === index ? "w-6 bg-ink" : "w-1.5 bg-ink/25"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
@@ -89,9 +95,9 @@ export function Testimonials() {
             type="button"
             aria-label="Next testimonial"
             onClick={() => go(1)}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-ink/60 transition-colors hover:text-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-ink/60 transition-colors hover:text-ink"
           >
-            <CaretRight size={18} weight="light" />
+            <CaretRight size={18} weight="light" aria-hidden />
           </button>
         </div>
       </div>

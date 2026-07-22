@@ -46,8 +46,7 @@ export function RingMark({
       viewBox="0 0 260 260"
       fill="none"
       className={className}
-      role="img"
-      aria-label="Reets Kahania ring and monogram mark"
+      aria-hidden="true"
     >
       {showBackdrop && <circle cx="130" cy="130" r="128" fill={backdrop} />}
 
