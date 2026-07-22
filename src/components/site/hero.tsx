@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { RingMark } from "@/components/site/ring-mark";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 import { siteConfig } from "@/lib/site-config";
 
 export function Hero() {
@@ -68,18 +69,12 @@ export function Hero() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a
-              href="#portfolio"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-ivory px-7 py-3.5 text-sm font-medium tracking-wide text-ink transition-colors duration-200 ease-out hover:bg-blush active:scale-[0.97]"
-            >
+            <MagneticButton href="#portfolio" variant="hero-primary">
               View Portfolio
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-ivory/50 px-7 py-3.5 text-sm font-medium tracking-wide text-ivory transition-colors duration-200 ease-out hover:border-ivory hover:bg-ivory/10 active:scale-[0.97]"
-            >
+            </MagneticButton>
+            <MagneticButton href="#contact" variant="hero-outline">
               Book a Session
-            </a>
+            </MagneticButton>
           </motion.div>
         </div>
       </div>
