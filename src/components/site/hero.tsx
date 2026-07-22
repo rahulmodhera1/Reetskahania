@@ -43,14 +43,15 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 sm:pb-24 lg:px-10 lg:pb-28">
         <div className="max-w-2xl">
-          <motion.h1
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="text-balance font-display text-[2.75rem] font-medium leading-[1.05] tracking-[-0.02em] sm:text-6xl lg:text-7xl"
-          >
+          {/*
+            Deliberately not motion-gated: this heading is the page's LCP
+            candidate, and an opacity-0 initial state (however briefly)
+            delays Largest Contentful Paint. It renders at full opacity
+            immediately; only the elements below it stagger in.
+          */}
+          <h1 className="text-balance font-display text-[2.75rem] font-medium leading-[1.05] tracking-[-0.02em] sm:text-6xl lg:text-7xl">
             {siteConfig.name}
-          </motion.h1>
+          </h1>
 
           <motion.p
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}

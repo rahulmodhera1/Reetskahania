@@ -77,7 +77,10 @@ export function Portfolio() {
               >
                 {/* PLACEHOLDER MEDIA — real footage/photography from the client's
                     events will replace this tile. src is set on the underlying
-                    data model for a straightforward swap later. */}
+                    data model for a straightforward swap later. When real photos
+                    land, render them with next/image (fill + sizes, lazy-loaded
+                    below the fold) instead of this icon block; for real reels,
+                    a muted looping <video> with poster, matching the hero. */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-ink/70 transition-transform duration-500 ease-out group-hover:scale-105">
                   {item.type === "video" ? (
                     <Play size={32} weight="light" aria-hidden />

@@ -2,11 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
+// Static weights only (400 for the italic testimonial quote, 500 for every
+// display heading) — the full variable-axis font (opsz/SOFT/WONK) added
+// ~270KB of woff2 that wasn't being used anywhere and was delaying LCP.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
-  weight: "variable",
+  weight: ["400", "500"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -14,7 +16,7 @@ const fraunces = Fraunces({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 

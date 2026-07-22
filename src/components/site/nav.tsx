@@ -70,7 +70,7 @@ export function Nav() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium tracking-wide opacity-90 transition-opacity hover:opacity-100"
+                className="inline-flex items-center py-2.5 text-sm font-medium tracking-wide opacity-90 transition-opacity hover:opacity-100"
               >
                 {link.label}
               </a>
