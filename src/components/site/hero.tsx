@@ -48,8 +48,15 @@ export function Hero() {
             {!shouldReduceMotion && (
               <motion.div
                 aria-hidden
-                className="absolute inset-0 bg-ivory"
-                style={{ transformOrigin: "right" }}
+                className="absolute -inset-x-1 -inset-y-1 blur-[6px]"
+                // Sampled directly from the hero gradient at the headline's
+                // position (rgb 243,232,223) rather than reusing a design
+                // token like ivory (250,245,239) — close as those look side
+                // by side, that gap is exactly what made the first version
+                // of this panel visible as a mismatched white box instead of
+                // blending into the background. A slight blur on the panel
+                // itself (not the text) hides the last bit of edge seam.
+                style={{ transformOrigin: "right", backgroundColor: "rgb(243, 232, 223)" }}
                 initial={{ scaleX: 1 }}
                 animate={{ scaleX: 0 }}
                 transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1], delay: 0.15 }}

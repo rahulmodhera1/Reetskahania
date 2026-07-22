@@ -29,12 +29,12 @@ export function Footer() {
               <span aria-hidden className="h-1 w-1 rotate-45 bg-gold" />
               Navigate
             </p>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-ink/75 transition-colors hover:text-gold-deep"
+                    className="inline-block py-2 text-sm text-ink/75 transition-colors hover:text-gold-deep"
                   >
                     {link.label}
                   </a>
@@ -48,7 +48,7 @@ export function Footer() {
               <span aria-hidden className="h-1 w-1 rotate-45 bg-gold" />
               Connect
             </p>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-2">
               {socialLinks.map((social) => {
                 const Icon = platformIcons[social.platform];
                 return (
@@ -57,7 +57,7 @@ export function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 text-sm text-ink/75 transition-colors hover:text-gold-deep"
+                      className="group inline-flex items-center gap-2 py-2 text-sm text-ink/75 transition-colors hover:text-gold-deep"
                     >
                       <Icon size={15} weight="light" aria-hidden className="transition-colors group-hover:text-gold" />
                       {social.handle}
@@ -68,7 +68,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-sm text-ink/75 transition-colors hover:text-gold-deep"
+                  className="inline-block py-2 text-sm text-ink/75 transition-colors hover:text-gold-deep"
                 >
                   {siteConfig.email}
                 </a>

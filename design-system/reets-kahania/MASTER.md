@@ -437,6 +437,59 @@ oversized quote mark read as misplaced sitting almost flush with the
 quote text; shifted further left (`-left-3` → `-left-10`, `sm:-left-14`)
 so it reads clearly as a decorative mark rather than crowding the copy.
 
+## Revision 7: the drawn-headline seam, and a full mobile-compatibility pass
+
+**The drawn-headline white box, reported mid-turn with a screenshot**:
+Revision 6's "text being drawn on load" reveal covered the H1 with a flat
+`bg-ivory` (#FAF5EF) panel that wiped away via `scaleX`. In the browser
+this rendered as an obviously mismatched flat white rectangle against
+the hero's soft radial-gradient background, instead of blending in.
+Sampled the actual rendered background color at the H1's position with
+Playwright + PIL (hiding the H1 and the panel, screenshotting, reading
+pixels across a grid inside the H1's bounding box) — it came back a
+near-uniform rgb(243,232,223) both on desktop and mobile viewports, ~10
+units off ivory in each channel, which is exactly the kind of gap that
+reads as "wrong" sitting directly next to the real thing. Replaced the
+flat ivory with the sampled color, added a small overhang
+(`-inset-x-1 -inset-y-1`) plus a 6px blur on the panel itself (not the
+text) so the one remaining edge seam feathers into the background
+instead of presenting a hard rectangle outline. Verified with an
+isolated screenshot of just the H1 mid-wipe — no visible box — and
+re-ran Lighthouse to confirm the static blur (unlike an animated
+property) added no measurable performance cost.
+
+**Full mobile-compatibility audit**: swept every section at five
+viewport widths (320, 360, 375, 390, 768px) checking for horizontal
+overflow, checked touch-target sizes site-wide, and exercised the
+mobile nav menu specifically. Two real issues surfaced:
+
+- **Mobile nav bleed-through**: the hamburger menu was a `height: auto`
+  panel sized to its own content, inside a `position: fixed` header.
+  Opening it while scrolled near the footer left a gap below the nav
+  links where the page's actual footer content — scrolled to and frozen
+  in place by the menu's own scroll-lock — showed through. Changed the
+  panel's animated height target from `"auto"` to
+  `"calc(100dvh - 72px)"` (with `overflow-y-auto` as a safety net for
+  short/landscape viewports) so it always seals off the full viewport
+  regardless of where the page was scrolled when it opened.
+- **Footer touch targets**: the Navigate/Connect link lists and the
+  email link had no padding, giving ~17-20px-tall tap targets — well
+  under the ~40-44px usually recommended for comfortable phone use.
+  Added `py-2` to each link (inline-block for the plain text links, kept
+  inline-flex for the icon+handle social links), bringing them to a
+  consistent 36px without visibly changing the footer's density.
+
+Confirmed no horizontal overflow and no visual clipping at any tested
+width down to 320px (including the Revision 6 slogan fix, which held up
+even at that width), that the tablet (768px) breakpoint's 3-column
+Portfolio grid and simultaneous nav-CTA-plus-hamburger state both look
+intentional, and that the Contact form's fields and native date input
+are comfortably usable at phone width. Lighthouse mobile
+(`--emulated-form-factor=mobile`) held at 93/100/100/100, and
+`meta-viewport`/`viewport-insight` both pass — the viewport tag was
+already correctly configured (`width=device-width, initial-scale=1`,
+no zoom lock), so pinch-zoom accessibility was never at risk.
+
 ## Source of truth
 
 This file is the master. Section-specific overrides (if any) live in

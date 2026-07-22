@@ -97,14 +97,22 @@ export function Nav() {
         className="h-px origin-left bg-gold/70"
       />
 
+      {/*
+        Height animates to the full remaining viewport (not "auto" sized to
+        content) so the panel always seals off whatever page content sits
+        beneath it. With an auto-height panel, opening the menu while
+        scrolled near the footer let the footer show through the gap below
+        the nav links — the fixed header covers the top of the viewport,
+        but a short auto-height dropdown doesn't cover the rest of it.
+      */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: "calc(100dvh - 72px)" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden bg-ivory lg:hidden"
+            className="overflow-y-auto overflow-x-hidden bg-ivory lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 pb-6 pt-2 text-ink">
               {navLinks.map((link) => (
