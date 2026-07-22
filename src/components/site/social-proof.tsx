@@ -1,17 +1,16 @@
-import { ArrowUpRight, InstagramLogo, LinkSimple } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, InstagramLogo, TiktokLogo } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/ui/reveal";
 import { TiltCard } from "@/components/ui/tilt-card";
-import { socialLinks } from "@/lib/site-config";
+import { socialLinks, type SocialPlatform } from "@/lib/site-config";
 
-const icons = {
-  "instagram-business": InstagramLogo,
-  "instagram-personal": InstagramLogo,
-  "second-platform": LinkSimple,
-} as const;
+const platformIcons: Record<SocialPlatform, typeof InstagramLogo> = {
+  instagram: InstagramLogo,
+  tiktok: TiktokLogo,
+};
 
 export function SocialProof() {
   const [primary, ...rest] = socialLinks;
-  const PrimaryIcon = icons[primary.id as keyof typeof icons];
+  const PrimaryIcon = platformIcons[primary.platform];
 
   return (
     <section className="bg-ivory py-24 sm:py-32">
@@ -42,9 +41,9 @@ export function SocialProof() {
                 </div>
                 <div>
                   <p className="font-display text-3xl font-medium tracking-[-0.01em] text-ink sm:text-4xl">
-                    {primary.sublabel}
+                    {primary.handle}
                   </p>
-                  <p className="mt-1 text-sm text-ink/70">{primary.label}, main account</p>
+                  <p className="mt-1 text-sm text-ink/70">{primary.descriptor} account</p>
                 </div>
               </a>
             </TiltCard>
@@ -52,25 +51,22 @@ export function SocialProof() {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
             {rest.map((social, i) => {
-              const Icon = icons[social.id as keyof typeof icons];
-              const isExternal = social.href.startsWith("http");
+              const Icon = platformIcons[social.platform];
               return (
                 <Reveal key={social.id} delay={0.1 + i * 0.08}>
                   <a
                     href={social.href}
-                    {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    aria-disabled={!isExternal}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex items-center justify-between gap-4 rounded-2xl border border-ink/12 p-6 transition-colors duration-200 ease-out hover:border-ink/30 hover:bg-beige/30"
                   >
                     <div className="flex items-center gap-3">
                       <Icon size={20} weight="light" aria-hidden className="text-ink/70" />
                       <div>
                         <p className="font-display text-lg font-medium tracking-[-0.01em] text-ink">
-                          {social.sublabel === "Platform TBD" ? social.label : social.sublabel}
+                          {social.handle}
                         </p>
-                        <p className="text-sm text-ink/70">
-                          {social.sublabel === "Platform TBD" ? "Platform to be confirmed" : social.label}
-                        </p>
+                        <p className="text-sm text-ink/70">{social.descriptor}</p>
                       </div>
                     </div>
                     <ArrowUpRight

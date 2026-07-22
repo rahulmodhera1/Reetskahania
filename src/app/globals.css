@@ -21,7 +21,7 @@
   --color-blush: var(--color-blush);
   --color-on-ink: var(--color-on-ink);
 
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-display-serif);
   --font-sans: var(--font-inter);
 
   --ease-out-strong: cubic-bezier(0.16, 1, 0.3, 1);

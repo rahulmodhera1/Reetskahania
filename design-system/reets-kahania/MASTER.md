@@ -178,6 +178,73 @@ reinvention.
   paint. Final: Performance 93, Accessibility/Best Practices/SEO 100/100/100
   (production build, simulated throttling).
 
+## Revision 3: client rejected the hero and font, went all-light
+
+Direct client feedback after seeing Revision 2: "I hate the way the site
+looks... I hate the hero, looks so boring. Doesn't even say what she
+offers. I dislike the font throughout the whole site... make the colours
+around the whole site Beige and Neutral Shades." This is a stronger, more
+specific signal than the Revision 2 taste-skill pass and takes priority
+over it wherever they conflict.
+
+**Font**: swapped Fraunces for **Playfair Display**. Fraunces is a soft,
+warm, "wonky"-contrast serif; the client's actual logo monogram (the R/K)
+is a high-contrast Didone with thin hairlines and dramatic thick strokes.
+Playfair Display is a much closer match to that specific mark, and the
+client explicitly asked for the site font to match the logo, which is the
+documented override condition for reaching past Fraunces/serif defaults in
+the first place.
+
+**Color**: removed every dark (`bg-ink`) section site-wide. Hero, Service
+Area, and Footer all moved from near-black backgrounds to the beige/ivory/
+neutral family, ink used only for text and buttons from here on. Rationale:
+"beige and neutral shades... around the WHOLE site" is unambiguous, and the
+dark hero in particular was reading as generic stock-photography-hero
+cliché rather than the client's actual (warm, pastel) brand identity.
+
+**Hero**: full rebuild. Previous version was a dark gradient with no
+mention of services; new version states the offering directly (an
+"Event Content Creator" eyebrow plus Reels/BTS/Candid pills next to the
+headline, not buried in a later section) and leans on the real logo at
+dramatic scale (620px, bleeding off the right edge, scroll-parallaxed) as
+the visual anchor instead of a photo/video placeholder. This is the
+brief's "no photo asset, still needs a real hero" problem solved with the
+one real, on-brand asset available (the logo) rather than another gradient.
+
+**Logo colorways**: with no dark sections left, the ivory PNG variants
+(`logo-mark-ivory.png`, `logo-icon-ivory.png`) became dead code and were
+deleted; `Logo` component simplified to ink-only. If a future revision
+reintroduces a dark section, regenerate the ivory PNGs with the same local
+chroma-key script used originally:
+
+```python
+from PIL import Image
+import numpy as np
+im = Image.open("public/logo.jpg").convert("RGB")
+arr = np.array(im).astype(np.float32)
+bg = np.array([223, 206, 198], dtype=np.float32)  # sampled corner pixel
+dist = np.sqrt(((arr - bg) ** 2).sum(axis=2))
+alpha = np.clip((dist - 12) / (60 - 12), 0, 1) * 255  # low=12, high=60 thresholds
+out = np.zeros((*arr.shape[:2], 4), dtype=np.uint8)
+out[..., :3] = [250, 245, 239]  # ivory, or [28, 24, 21] for ink
+out[..., 3] = alpha.astype(np.uint8)
+Image.fromarray(out, "RGBA").save("public/logo-mark-ivory.png")
+```
+
+**Social links**: client specified exact display rules per account, none of
+which the v1/v2 schema supported (it printed the word "Instagram" for both
+IG accounts and had a "Platform TBD" placeholder for the TikTok account,
+which the client has now named explicitly). New schema is
+`{ platform: "instagram" | "tiktok", handle, descriptor }`: platform drives
+the icon (so the platform is shown, never stated in text for the two
+Instagram accounts), `descriptor` is "Business" / "Personal" / "TikTok".
+
+**Nav**: was built assuming a dark hero (ivory text over a transparent
+header, solidifying to ink text on scroll). With the hero now light, that
+produced near-invisible ivory-on-beige nav text, caught in this session's
+own screenshot QA before shipping. Simplified: nav text is always ink;
+only the background (transparent to blurred-ivory) changes on scroll.
+
 ## Source of truth
 
 This file is the master. Section-specific overrides (if any) live in

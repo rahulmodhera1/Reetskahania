@@ -87,24 +87,34 @@ export const testimonials = [
   },
 ] as const;
 
-export const socialLinks = [
+export type SocialPlatform = "instagram" | "tiktok";
+
+export const socialLinks: Array<{
+  id: string;
+  platform: SocialPlatform;
+  handle: string;
+  descriptor: string;
+  href: string;
+}> = [
   {
     id: "instagram-business",
-    label: "Instagram",
-    sublabel: "@reetskahania",
+    platform: "instagram",
+    handle: "@reetskahania",
+    descriptor: "Business",
     href: "https://instagram.com/reetskahania",
   },
   {
     id: "instagram-personal",
-    label: "Instagram (personal)",
-    sublabel: "@Navreetkp02",
+    platform: "instagram",
+    handle: "@Navreetkp02",
+    descriptor: "Personal",
     href: "https://instagram.com/Navreetkp02",
   },
   {
-    id: "second-platform",
-    // Platform unspecified by client: swap `href`/icon once confirmed.
-    label: "@Reetskahanita",
-    sublabel: "Platform TBD",
-    href: "#",
+    id: "tiktok",
+    platform: "tiktok",
+    handle: "@Reetskahanita",
+    descriptor: "TikTok",
+    href: "https://www.tiktok.com/@Reetskahanita",
   },
-] as const;
+];

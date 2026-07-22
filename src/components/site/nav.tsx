@@ -39,7 +39,7 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ease-out ${
+      className={`fixed inset-x-0 top-0 z-50 text-ink transition-colors duration-300 ease-out ${
         solid
           ? "bg-ivory/92 backdrop-blur-md border-b border-ink/10"
           : "bg-transparent border-b border-transparent"
@@ -49,24 +49,17 @@ export function Nav() {
         className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6 lg:px-10"
         aria-label="Primary"
       >
-        <a
-          href="#top"
-          className={`flex items-center gap-2.5 text-sm font-medium tracking-wide transition-colors ${
-            solid ? "text-ink" : "text-ivory"
-          }`}
-        >
-          <Logo variant={solid ? "ink" : "ivory"} size={34} priority />
+        <a href="#top" className="flex items-center gap-2.5 text-sm font-medium tracking-wide">
+          <Logo size={34} priority />
           <span className="font-display text-base tracking-normal">{siteConfig.name}</span>
         </a>
 
-        <ul
-          className={`hidden items-center gap-8 lg:flex ${solid ? "text-ink" : "text-ivory"}`}
-        >
+        <ul className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="inline-flex items-center py-2.5 text-sm font-medium tracking-wide opacity-90 transition-opacity hover:opacity-100"
+                className="inline-flex items-center py-2.5 text-sm font-medium tracking-wide opacity-80 transition-opacity hover:opacity-100"
               >
                 {link.label}
               </a>
@@ -77,11 +70,7 @@ export function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className={`hidden rounded-full px-5 py-2.5 text-sm font-medium tracking-wide transition-colors duration-200 sm:inline-flex ${
-              solid
-                ? "bg-ink text-on-ink hover:bg-ink/90"
-                : "bg-ivory text-ink hover:bg-blush"
-            }`}
+            className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium tracking-wide text-on-ink transition-colors duration-200 hover:bg-ink/90 sm:inline-flex"
           >
             Book a Session
           </a>
@@ -91,9 +80,7 @@ export function Nav() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden ${
-              solid ? "text-ink" : "text-ivory"
-            }`}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden"
           >
             {menuOpen ? (
               <X size={22} weight="light" aria-hidden />
@@ -107,7 +94,7 @@ export function Nav() {
       <motion.div
         aria-hidden
         style={{ scaleX: scrollYProgress }}
-        className={`h-px origin-left ${solid ? "bg-ink/25" : "bg-ivory/40"}`}
+        className="h-px origin-left bg-ink/25"
       />
 
       <AnimatePresence>

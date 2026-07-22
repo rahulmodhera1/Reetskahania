@@ -13,7 +13,7 @@ export function About() {
                 className="absolute -bottom-5 -right-5 hidden h-full w-full rounded-2xl border border-ink/15 sm:block"
               />
               <div className="relative flex aspect-[4/5] w-full max-w-md items-center justify-center overflow-hidden rounded-2xl bg-beige">
-                <Logo variant="ink" crop="full" size={220} className="opacity-70" />
+                <Logo crop="full" size={220} className="opacity-70" />
                 {/* PLACEHOLDER: swap this panel for a real portrait of Reets Kahania at work */}
                 <span className="absolute bottom-4 left-4 text-[10px] font-medium uppercase tracking-[0.2em] text-ink/70">
                   Placeholder, portrait to be added

@@ -8,8 +8,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
-  const [frauncesMedium, interMedium, logoBuffer] = await Promise.all([
-    getGoogleFont("Fraunces", 600, "Reets Kahania"),
+  const [playfairBold, interMedium, logoBuffer] = await Promise.all([
+    getGoogleFont("Playfair Display", 700, "Reets Kahania"),
     getGoogleFont(
       "Inter",
       500,
@@ -49,9 +49,9 @@ export default async function OpengraphImage() {
           <div
             style={{
               display: "flex",
-              fontFamily: "Fraunces",
+              fontFamily: "Playfair Display",
               fontSize: 76,
-              fontWeight: 600,
+              fontWeight: 700,
               color: "#1C1815",
               letterSpacing: -2,
               lineHeight: 1.05,
@@ -93,7 +93,7 @@ export default async function OpengraphImage() {
     {
       ...size,
       fonts: [
-        { name: "Fraunces", data: frauncesMedium, weight: 600, style: "normal" },
+        { name: "Playfair Display", data: playfairBold, weight: 700, style: "normal" },
         { name: "Inter", data: interMedium, weight: 500, style: "normal" },
       ],
     }

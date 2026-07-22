@@ -22,13 +22,15 @@ npm run lint    # eslint
 ## Logo
 
 The client's real logo (`public/logo.jpg`) is wired in everywhere: nav,
-footer, favicon, apple touch icon, and the Open Graph image. Two transparent
-PNG colorways were extracted from it (`public/logo-mark.png` in ink for
-light sections, `public/logo-mark-ivory.png` in ivory for dark sections),
-plus tightly-cropped `logo-icon*.png` variants for small badge use, all
-served through `src/components/site/logo.tsx`. If a vector version becomes
-available later, swap the PNGs for SVGs there for crisper scaling at large
-sizes (the hero's 460px mark).
+footer, favicon, apple touch icon, and the Open Graph image. An ink-on-
+transparent PNG was extracted from it (`public/logo-mark.png`), plus a
+tightly-cropped `logo-icon.png` for small badge use, both served through
+`src/components/site/logo.tsx`. The whole site uses a light beige/neutral
+palette with no dark sections, so only the ink colorway is needed; if a
+dark section is added later, regenerate an ivory PNG the same way (see the
+chroma-key extraction note in `design-system/reets-kahania/MASTER.md`). If
+a vector version becomes available later, swap the PNG for an SVG there for
+crisper scaling at large sizes (the hero's 620px mark).
 
 ## Before launch: placeholders to replace
 

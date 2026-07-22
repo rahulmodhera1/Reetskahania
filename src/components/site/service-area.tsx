@@ -8,24 +8,24 @@ export function ServiceArea() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="service-area" className="relative overflow-hidden bg-ink py-24 text-ivory sm:py-32">
+    <section id="service-area" className="relative overflow-hidden bg-beige/40 py-24 sm:py-32">
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-32 -left-24 opacity-[0.07] sm:-left-16"
+        className="pointer-events-none absolute -bottom-32 -left-24 opacity-[0.06] sm:-left-16"
       >
-        <Image src="/logo-mark-ivory.png" alt="" width={420} height={420} sizes="420px" loading="lazy" />
+        <Image src="/logo-mark.png" alt="" width={420} height={420} sizes="420px" loading="lazy" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-6">
             <Reveal>
-              <h2 className="text-balance font-display text-4xl font-medium leading-tight tracking-[-0.02em] sm:text-5xl">
+              <h2 className="text-balance font-display text-4xl font-semibold leading-tight tracking-[-0.02em] text-ink sm:text-5xl">
                 Sacramento &amp; Reno, and the road between.
               </h2>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-ivory/75 sm:text-lg">
+              <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-ink/75 sm:text-lg">
                 Reets is based across both cities and books events throughout
                 the greater Sacramento and Reno-Tahoe areas. Travel further
                 out is available for the right event. Reach out with your
@@ -38,8 +38,8 @@ export function ServiceArea() {
             <Reveal delay={0.2}>
               <div className="flex items-center gap-0 py-8">
                 <div className="flex flex-col items-center gap-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-ivory" />
-                  <span className="text-sm font-medium tracking-wide">Sacramento</span>
+                  <span className="h-2.5 w-2.5 rounded-full bg-ink" />
+                  <span className="text-sm font-medium tracking-wide text-ink">Sacramento</span>
                 </div>
 
                 <svg
@@ -54,10 +54,10 @@ export function ServiceArea() {
                     y1="1"
                     x2="200"
                     y2="1"
-                    stroke="#FAF5EF"
+                    stroke="#1C1815"
                     strokeWidth="1"
                     strokeDasharray="4 6"
-                    strokeOpacity="0.5"
+                    strokeOpacity="0.4"
                     initial={shouldReduceMotion ? { pathLength: 1 } : { pathLength: 0 }}
                     whileInView={{ pathLength: 1 }}
                     viewport={{ once: true }}
@@ -66,11 +66,11 @@ export function ServiceArea() {
                 </svg>
 
                 <div className="flex flex-col items-center gap-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-ivory" />
-                  <span className="text-sm font-medium tracking-wide">Reno</span>
+                  <span className="h-2.5 w-2.5 rounded-full bg-ink" />
+                  <span className="text-sm font-medium tracking-wide text-ink">Reno</span>
                 </div>
               </div>
-              <p className="text-sm font-medium uppercase tracking-[0.16em] text-ivory/60">
+              <p className="text-sm font-medium uppercase tracking-[0.16em] text-taupe-text">
                 Travel available beyond both cities
               </p>
             </Reveal>

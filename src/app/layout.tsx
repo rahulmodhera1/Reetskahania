@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
-// Static weights only (400 for the italic testimonial quote, 500 for every
-// display heading) — the full variable-axis font (opsz/SOFT/WONK) added
-// ~270KB of woff2 that wasn't being used anywhere and was delaying LCP.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Playfair Display: a high-contrast Didone serif that actually matches the
+// thin-hairline, thick-stroke R/K monogram in the client's real logo
+// (Fraunces, used previously, is a soft "wonky" warm-contrast serif with
+// the opposite personality). Static weights only, no italic beyond what
+// the testimonial pull-quote needs.
+const displayFont = Playfair_Display({
+  variable: "--font-display-serif",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["500", "600", "700", "800"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -71,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="en" className={`${displayFont.variable} ${inter.variable}`}>
       <body className="bg-ivory text-ink font-sans antialiased">
         <div aria-hidden className="grain-overlay" />
         {children}
