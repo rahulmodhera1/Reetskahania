@@ -41,7 +41,7 @@ export function SocialProof() {
                     <p className="font-display text-lg font-medium tracking-[-0.01em] text-ink">
                       {social.sublabel === "Platform TBD" ? social.label : social.sublabel}
                     </p>
-                    <p className="mt-1 text-sm text-ink/55">
+                    <p className="mt-1 text-sm text-ink/70">
                       {social.sublabel === "Platform TBD" ? "Platform to be confirmed" : social.label}
                     </p>
                   </div>

@@ -29,7 +29,7 @@ export function Testimonials() {
     <section id="testimonials" className="bg-beige/40 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-6 lg:px-10">
         <Reveal>
-          <p className="text-center text-[10px] font-medium uppercase tracking-[0.2em] text-ink/50">
+          <p className="text-center text-[10px] font-medium uppercase tracking-[0.2em] text-ink/70">
             Placeholder quotes — replace with real client testimonials
           </p>
         </Reveal>
@@ -53,8 +53,8 @@ export function Testimonials() {
                   &ldquo;{current.quote}&rdquo;
                 </p>
               </blockquote>
-              <figcaption className="mt-6 text-sm font-medium tracking-wide text-taupe">
-                {current.name} <span className="text-ink/40">·</span> {current.role}
+              <figcaption className="mt-6 text-sm font-medium tracking-wide text-taupe-text">
+                {current.name} <span className="text-ink/70">·</span> {current.role}
               </figcaption>
             </motion.figure>
           </AnimatePresence>

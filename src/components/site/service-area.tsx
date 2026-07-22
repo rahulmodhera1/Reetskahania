@@ -62,7 +62,7 @@ export function ServiceArea() {
                   <span className="text-sm font-medium tracking-wide">Reno</span>
                 </div>
               </div>
-              <p className="text-sm font-medium uppercase tracking-[0.16em] text-ivory/45">
+              <p className="text-sm font-medium uppercase tracking-[0.16em] text-ivory/60">
                 Travel available beyond both cities
               </p>
             </Reveal>

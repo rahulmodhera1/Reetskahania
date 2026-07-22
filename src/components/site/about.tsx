@@ -10,7 +10,7 @@ export function About() {
             <div className="relative flex aspect-[4/5] w-full max-w-md items-center justify-center overflow-hidden rounded-2xl bg-beige">
               <RingMark size={220} showWordmark={false} className="opacity-70" />
               {/* PLACEHOLDER — swap this panel for a real portrait of Reets Kahania at work */}
-              <span className="absolute bottom-4 left-4 text-[10px] font-medium uppercase tracking-[0.2em] text-ink/45">
+              <span className="absolute bottom-4 left-4 text-[10px] font-medium uppercase tracking-[0.2em] text-ink/70">
                 Placeholder — portrait to be added
               </span>
             </div>

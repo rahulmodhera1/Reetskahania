@@ -48,7 +48,7 @@ export function Portfolio() {
                   className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 ease-out ${
                     active === filter
                       ? "bg-ink text-on-ink"
-                      : "bg-transparent text-ink/60 hover:text-ink"
+                      : "bg-transparent text-ink/70 hover:text-ink"
                   }`}
                 >
                   {filter}
@@ -78,7 +78,7 @@ export function Portfolio() {
                 {/* PLACEHOLDER MEDIA — real footage/photography from the client's
                     events will replace this tile. src is set on the underlying
                     data model for a straightforward swap later. */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-ink/50 transition-transform duration-500 ease-out group-hover:scale-105">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-ink/70 transition-transform duration-500 ease-out group-hover:scale-105">
                   {item.type === "video" ? (
                     <Play size={32} weight="light" />
                   ) : (

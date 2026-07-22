@@ -83,7 +83,7 @@ export function Hero() {
         </div>
       </div>
 
-      <span className="absolute bottom-4 left-6 z-10 text-[10px] font-medium uppercase tracking-[0.2em] text-ivory/35 lg:left-10">
+      <span className="absolute bottom-4 left-6 z-10 max-w-[calc(100%-3rem)] text-[10px] font-medium uppercase tracking-[0.2em] text-ivory/60 lg:left-10">
         Placeholder background — reel footage to be added
       </span>
     </section>

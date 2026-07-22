@@ -9,7 +9,7 @@ import { eventTypes, siteConfig } from "@/lib/site-config";
 const initialState: ContactFormState = { status: "idle", message: "" };
 
 const fieldClasses =
-  "w-full rounded-xl border border-ink/20 bg-ivory px-4 py-3 text-base text-ink placeholder:text-ink/40 outline-none transition-colors duration-150 ease-out focus:border-ink";
+  "w-full rounded-xl border border-ink/20 bg-ivory px-4 py-3 text-base text-ink placeholder:text-ink/65 outline-none transition-colors duration-150 ease-out focus:border-ink";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -120,7 +120,7 @@ export function Contact() {
               </p>
             </div>
 
-            <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-ink/40">
+            <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-ink/70">
               Form isn&rsquo;t connected to email yet — see TODO in
               src/lib/actions.ts to wire up Formspree or Resend
             </p>
@@ -128,7 +128,7 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <p className="mt-10 text-sm text-ink/60">
+          <p className="mt-10 text-sm text-ink/70">
             Prefer email? Reach out directly at{" "}
             <a href={`mailto:${siteConfig.email}`} className="font-medium text-ink underline underline-offset-4">
               {siteConfig.email}

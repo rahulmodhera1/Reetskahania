@@ -19,7 +19,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-ivory/45">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-ivory/60">
               Navigate
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -37,7 +37,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-ivory/45">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-ivory/60">
               Connect
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -65,7 +65,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-ivory/10 pt-8 text-xs text-ivory/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-ivory/10 pt-8 text-xs text-ivory/60 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} {siteConfig.name}. All rights reserved.</p>
           <p>Sacramento &amp; Reno · Reels · BTS · Candid</p>
         </div>

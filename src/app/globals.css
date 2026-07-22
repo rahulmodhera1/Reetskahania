@@ -5,6 +5,9 @@
   --color-ivory: #faf5ef;
   --color-ink: #1c1815;
   --color-taupe: #8c7663;
+  /* Darkened taupe for text use — #8C7663 alone is 3.96:1 on ivory and
+     2.93:1 on beige, both below WCAG AA. This variant clears 4.5:1 on both. */
+  --color-taupe-text: #655548;
   --color-blush: #d9bcac;
   --color-on-ink: #faf5ef;
 }
@@ -14,6 +17,7 @@
   --color-ivory: var(--color-ivory);
   --color-ink: var(--color-ink);
   --color-taupe: var(--color-taupe);
+  --color-taupe-text: var(--color-taupe-text);
   --color-blush: var(--color-blush);
   --color-on-ink: var(--color-on-ink);
 

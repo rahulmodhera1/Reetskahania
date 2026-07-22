@@ -19,7 +19,7 @@ export function Services() {
                   <h3 className="font-display text-3xl font-medium tracking-[-0.01em] text-ink sm:text-4xl">
                     {service.name}
                   </h3>
-                  <p className="mt-1 text-sm font-medium uppercase tracking-[0.14em] text-taupe">
+                  <p className="mt-1 text-sm font-medium uppercase tracking-[0.14em] text-taupe-text">
                     {service.tagline}
                   </p>
                 </div>
