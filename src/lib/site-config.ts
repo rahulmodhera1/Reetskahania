@@ -106,15 +106,15 @@ export const socialLinks: Array<{
   {
     id: "instagram-personal",
     platform: "instagram",
-    handle: "@Navreetkp02",
+    handle: "@navreetk02",
     descriptor: "Personal",
-    href: "https://instagram.com/Navreetkp02",
+    href: "https://instagram.com/navreetk02",
   },
   {
     id: "tiktok",
     platform: "tiktok",
-    handle: "@Reetskahanita",
+    handle: "@reetskahania",
     descriptor: "TikTok",
-    href: "https://www.tiktok.com/@Reetskahanita",
+    href: "https://www.tiktok.com/@reetskahania",
   },
 ];

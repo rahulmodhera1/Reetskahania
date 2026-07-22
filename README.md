@@ -48,9 +48,8 @@ placeholder. Search the codebase for `PLACEHOLDER` to find every instance.
   placeholder icon tiles.
 - **Testimonials**: `src/lib/site-config.ts` (`testimonials`), placeholder quotes
   clearly labeled in the UI.
-- **Social links**: `src/lib/site-config.ts` (`socialLinks`). The third platform
-  (`@Reetskahanita`) wasn't specified by the client, swap the icon/href once
-  the platform is confirmed.
+- **Social links**: `src/lib/site-config.ts` (`socialLinks`). All three
+  accounts (Instagram business/personal, TikTok) are confirmed and live.
 
 ## Contact form
 
