@@ -26,7 +26,7 @@ export function Testimonials() {
   const current = testimonials[index];
 
   return (
-    <section id="testimonials" className="bg-beige/40 py-24 sm:py-32">
+    <section id="testimonials" className="bg-ivory py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <h2 className="sr-only">Testimonials</h2>
@@ -45,18 +45,28 @@ export function Testimonials() {
               &ldquo;
             </span>
 
-            <div className="relative min-h-[240px] sm:min-h-[200px]">
-              <AnimatePresence mode="wait">
+            {/*
+              Both the entering and exiting quote occupy the same CSS grid
+              cell (grid-area: 1/1), so the container auto-sizes to
+              whichever is tallest during the transition instead of a fixed
+              min-height that would clip longer quotes.
+            */}
+            <div className="grid">
+              <AnimatePresence initial={false}>
                 <motion.figure
                   key={index}
-                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -16 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative"
+                  initial={
+                    shouldReduceMotion
+                      ? { opacity: 0 }
+                      : { clipPath: "inset(0 100% 0 0)", opacity: 1 }
+                  }
+                  animate={{ clipPath: "inset(0 0% 0 0)", opacity: 1 }}
+                  exit={{ opacity: 0, transition: { duration: 0.3 } }}
+                  transition={{ duration: 0.7, ease: [0.77, 0, 0.175, 1] }}
+                  className="[grid-area:1/1]"
                 >
                   <blockquote>
-                    <p className="text-balance font-display text-3xl font-medium leading-[1.15] tracking-[-0.015em] text-ink sm:text-4xl lg:text-[2.75rem]">
+                    <p className="text-balance font-display text-3xl font-medium italic leading-[1.2] tracking-[-0.01em] text-ink sm:text-4xl lg:text-[2.6rem]">
                       {current.quote}
                     </p>
                   </blockquote>

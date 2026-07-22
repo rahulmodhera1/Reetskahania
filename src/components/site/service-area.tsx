@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -8,15 +7,8 @@ export function ServiceArea() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="service-area" className="relative overflow-hidden bg-beige/40 py-24 sm:py-32">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-32 -left-24 opacity-[0.06] sm:-left-16"
-      >
-        <Image src="/logo-mark.png" alt="" width={420} height={420} sizes="420px" loading="lazy" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+    <section id="service-area" className="border-y border-ink/10 bg-beige/50 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-6">
             <Reveal>
@@ -36,34 +28,51 @@ export function ServiceArea() {
 
           <div className="lg:col-span-5 lg:col-start-8">
             <Reveal delay={0.2}>
-              <div className="flex items-center gap-0 py-8">
+              <div className="relative flex items-center gap-0 py-8">
                 <div className="flex flex-col items-center gap-3">
                   <span className="h-2.5 w-2.5 rounded-full bg-ink" />
                   <span className="text-sm font-medium tracking-wide text-ink">Sacramento</span>
                 </div>
 
-                <svg
-                  className="mx-3 flex-1"
-                  height="2"
-                  viewBox="0 0 200 2"
-                  preserveAspectRatio="none"
-                  aria-hidden
-                >
-                  <motion.line
-                    x1="0"
-                    y1="1"
-                    x2="200"
-                    y2="1"
-                    stroke="#1C1815"
-                    strokeWidth="1"
-                    strokeDasharray="4 6"
-                    strokeOpacity="0.4"
-                    initial={shouldReduceMotion ? { pathLength: 1 } : { pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                  />
-                </svg>
+                <div className="relative mx-3 h-2 flex-1">
+                  <svg
+                    className="absolute inset-0 h-full w-full"
+                    height="2"
+                    viewBox="0 0 200 2"
+                    preserveAspectRatio="none"
+                    aria-hidden
+                  >
+                    <motion.line
+                      x1="0"
+                      y1="1"
+                      x2="200"
+                      y2="1"
+                      stroke="#1C1815"
+                      strokeWidth="1"
+                      strokeDasharray="4 6"
+                      strokeOpacity="0.4"
+                      initial={shouldReduceMotion ? { pathLength: 1 } : { pathLength: 0 }}
+                      whileInView={{ pathLength: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  </svg>
+                  {/* A small mark travels the route, back and forth, visualizing "we come to you." */}
+                  {!shouldReduceMotion && (
+                    <motion.span
+                      aria-hidden
+                      className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-taupe-text shadow-[0_0_0_4px_rgba(101,85,72,0.15)]"
+                      initial={{ left: "0%", opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      animate={{ left: ["0%", "100%", "0%"] }}
+                      transition={{
+                        opacity: { duration: 0.6, delay: 1 },
+                        left: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
+                      }}
+                    />
+                  )}
+                </div>
 
                 <div className="flex flex-col items-center gap-3">
                   <span className="h-2.5 w-2.5 rounded-full bg-ink" />

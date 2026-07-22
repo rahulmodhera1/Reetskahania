@@ -245,6 +245,71 @@ produced near-invisible ivory-on-beige nav text, caught in this session's
 own screenshot QA before shipping. Simplified: nav text is always ink;
 only the background (transparent to blurred-ivory) changes on scroll.
 
+## Revision 4: screenshot-driven bug pass + elegance reference
+
+Client sent five screenshots of the live Revision 3 build with specific,
+itemized complaints, then separately shared screenshots of an external
+reference site ("elegant and beautiful... NOT looking for something
+EXACTLY like this but the same vibe") for tone, not for copying.
+
+**Hero**: "remove the logo from the hero." The Revision 3 hero used the
+620px scroll-parallaxed logo as its visual anchor; the client rejected
+that outright rather than asking for a resize. Rebuilt as a centered,
+logo-free composition: eyebrow → headline → thin rule → italic slogan →
+service pills → CTAs → location tag, all on the same warm beige gradient.
+The H1 stays un-motion-gated for LCP, per the Revision 2 lesson.
+
+**About**: "why is this not aligned in the box... dislike the way the
+text is written, looks unprofessional." The offset decorative frame and
+drop-cap treatment were both removed — the frame's absolute-positioned
+second layer wasn't lining up against its parent at non-4:5 viewport
+widths, and the drop-cap forced an ugly ragged wrap on the first
+paragraph. Replaced with a single centered placeholder panel (logo on
+beige, labeled "portrait to be added") and plain-set body copy.
+
+**Portfolio**: "'Selected work' and the buttons... super boring."
+Heading bumped to `text-5xl sm:text-6xl`. Filter tabs rebuilt with a
+`layoutId`-based sliding pill background (spring physics) instead of a
+static active-state color swap. Placeholder tiles were flat single-tint
+blocks; replaced with six cycled diagonal gradients (not tied to
+category, so the grid doesn't read as three repeating blocks), a
+corner-bracket frame per tile (the reference-site motif — thin unfilled
+L-brackets at each corner), and an always-visible "Placeholder" pill so
+the gradient reads as an intentional placeholder rather than a missing
+image.
+
+**Service Area**: "remove the logo in the background... add some cool
+animations." The large low-opacity logo watermark is gone. Added a
+`border-y` for a crisp handoff from Hero, and a small dot that travels
+back and forth along the Sacramento–Reno route line on a 5s loop
+(`whileInView` gated, starts once, `prefers-reduced-motion` disables it)
+to visualize "we come to you" instead of decorating with the brand mark.
+
+**Service Area / Testimonials separation**: "should be separate, also
+super boring." The two sections previously shared near-identical
+`bg-beige/40` tints and sat flush against each other with no seam.
+Service Area is now `bg-beige/50` with a top/bottom border; Testimonials
+moved to `bg-ivory`, giving the two sections distinct, clearly separated
+fields.
+
+**Testimonials transition**: "the animation to go through the
+testimonials is stupid, remove that." Replaced the fade+slide crossfade
+with a clip-path wipe (`inset(0 100% 0 0)` → `inset(0 0% 0 0)`,
+`cubic-bezier(0.77,0,0.175,1)`, 700ms) using the CSS Grid overlap
+technique (`grid` container, each quote on `grid-area: 1/1`) so the
+container auto-sizes to whichever quote is tallest instead of clipping
+longer ones against a fixed height. Verified deliberately (scroll to
+section before the 6s auto-advance fires, then trigger the "Next"
+button by hand and screenshot mid-transition) that the wipe animates
+clean with no overlap/ghosting between outgoing and incoming quotes.
+Quote type also set to italic display serif to match the reference
+site's pull-quote treatment.
+
+**Dead code**: `MagneticButton`'s `hero-primary`/`hero-outline`
+variants, added in Revision 2 for the since-removed dark hero, were
+unused after the Revision 3 all-light palette and Revision 4 hero
+rebuild. Removed along with their type union members.
+
 ## Source of truth
 
 This file is the master. Section-specific overrides (if any) live in

@@ -7,19 +7,13 @@ export function About() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-8 lg:px-10">
         <div className="lg:col-span-5">
           <Reveal>
-            <div className="relative">
-              <div
-                aria-hidden
-                className="absolute -bottom-5 -right-5 hidden h-full w-full rounded-2xl border border-ink/15 sm:block"
-              />
-              <div className="relative flex aspect-[4/5] w-full max-w-md items-center justify-center overflow-hidden rounded-2xl bg-beige">
-                <Logo crop="full" size={220} className="opacity-70" />
-                {/* PLACEHOLDER: swap this panel for a real portrait of Reets Kahania at work */}
-                <span className="absolute bottom-4 left-4 text-[10px] font-medium uppercase tracking-[0.2em] text-ink/70">
-                  Placeholder, portrait to be added
-                </span>
-              </div>
+            <div className="flex aspect-[4/5] w-full max-w-md items-center justify-center overflow-hidden rounded-2xl bg-beige">
+              <Logo crop="full" size={220} className="opacity-70" />
+              {/* PLACEHOLDER: swap this panel for a real portrait of Reets Kahania at work */}
             </div>
+            <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.2em] text-taupe-text">
+              Placeholder, portrait to be added
+            </p>
           </Reveal>
         </div>
 
@@ -34,7 +28,7 @@ export function About() {
           </Reveal>
           <Reveal delay={0.18}>
             <div className="mt-6 space-y-5 text-pretty text-base leading-relaxed text-ink/80 sm:text-lg">
-              <p className="first-letter:float-left first-letter:mr-2 first-letter:font-display first-letter:text-6xl first-letter:font-medium first-letter:leading-[0.82] first-letter:text-ink sm:first-letter:text-7xl">
+              <p>
                 Reets Kahania approaches every event the same way: get close,
                 stay quiet, and let the day tell its own story. No forced
                 poses, no interrupting the moment for the perfect angle. Just

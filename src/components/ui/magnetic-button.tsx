@@ -11,7 +11,7 @@ import type { ReactNode, MouseEvent } from "react";
 type MagneticButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "secondary" | "ghost" | "hero-primary" | "hero-outline";
+  variant?: "primary" | "secondary" | "ghost";
   className?: string;
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
 };
@@ -20,9 +20,6 @@ const variantClasses: Record<NonNullable<MagneticButtonProps["variant"]>, string
   primary: "bg-ink text-on-ink hover:bg-ink/90",
   secondary: "bg-transparent text-ink border border-ink/70 hover:bg-ink hover:text-on-ink",
   ghost: "bg-ivory text-ink hover:bg-blush",
-  // On the dark hero section
-  "hero-primary": "bg-ivory text-ink hover:bg-blush",
-  "hero-outline": "bg-transparent text-ivory border border-ivory/50 hover:border-ivory hover:bg-ivory/10",
 };
 
 export function MagneticButton({
